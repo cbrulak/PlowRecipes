@@ -72,14 +72,10 @@ server {
   location ~ ^/assets/.*-(.*)\..* {
     gzip_static on;
     expires max;
-    add_header ETag $1;
-    #add_header Cache-Control public;
   }
 
   location = /favicon.ico {
     expires    max;
-    add_header ETag $1;
-    #add_header Cache-Control public;
   }
 }
 End-of-file

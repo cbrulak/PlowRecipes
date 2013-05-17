@@ -6,16 +6,13 @@ server {
   server_name blog.$HOST_NAME;
 
   client_max_body_size 4G;
-
+  
+  keepalive_timeout 5;
   access_log off;
   error_log /srv/$APP_NAME/log/blog.error.log;
 
   root /srv/$APP_NAME/public/blog/;
   
-  keepalive_timeout 5;
-  error_log  /srv/$APP_NAME/log/blog.nginx.error.log;
-  access_log  off;
-
   try_files \$uri/index.html \$uri.html \$uri @app;
   error_page 502 503 =503                  @maintenance;
   error_page 500 504 =500                  @server_error;
@@ -33,14 +30,10 @@ server {
   location ~ ^/blog/.*-(.*)\..* {
     gzip_static on;
     expires max;
-    add_header ETag $1;
-    add_header Cache-Control public;
   }
 
   location = /favicon.ico {
     expires    max;
-    add_header ETag $1;
-    add_header Cache-Control public;
   }
 }
 End-of-file
