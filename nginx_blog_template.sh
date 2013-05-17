@@ -12,7 +12,7 @@ server {
   access_log /srv/blog/$APP_NAME/log/blog.access.log;
   error_log /srv/blog/$APP_NAME/log/blog.error.log;
 
-  root /srv/blog/$APP_NAME/;
+  root /srv/$APP_NAME/public/blog/;
   
   try_files \$uri/index.html \$uri.html \$uri @app;
   error_page 502 503 =503                  @maintenance;
@@ -29,6 +29,16 @@ server {
   }
 
   location @app {
+    gzip_static on;
+    expires max;
+  }
+  
+  location ~ ^/assets/.*-(.*)\..* {
+    gzip_static on;
+    expires max;
+  }
+  
+  location ~ ^/stylesheets/.*-(.*)\..* {
     gzip_static on;
     expires max;
   }

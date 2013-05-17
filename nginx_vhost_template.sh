@@ -73,11 +73,6 @@ server {
     gzip_static on;
     expires max;
   }
-  
-  location ~ ^/blog/.*-(.*)\..* {
-    gzip_static on;
-    expires max;
-  }
 
   location = /favicon.ico {
     expires    max;
