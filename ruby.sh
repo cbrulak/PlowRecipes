@@ -2,8 +2,8 @@
 #
 # Based on http://blog.arkency.com/2012/11/one-app-one-user-one-ruby/
 #
-# $1 - ruby-version
-# $2 - deployer
+# $RUBY_VER - ruby-version
+# $APP_NAME - deployer
 
 # Install ruby-build
 if which ruby-build ; then
@@ -15,26 +15,26 @@ else
 fi
 
 # Install ruby
-if test -d "/home/$2/$1" ; then
-  echo "ruby-$1 already installed"
+if test -d "/home/$APP_NAME/$RUBY_VER" ; then
+  echo "ruby-$RUBY_VER already installed"
 else
-  ruby-build $1 /home/$2/$1
+  ruby-build $RUBY_VER /home/$APP_NAME/$RUBY_VER
 fi
 
 # Update path
-if grep -xq "export PATH=\$HOME/$1/bin:\$PATH" /home/$2/.bashrc ; then
+if grep -xq "export PATH=\$HOME/$RUBY_VER/bin:\$PATH" /home/$APP_NAME/.bashrc ; then
   echo 'Path already includes ruby'
 else
-  sed -i "1i export PATH=\$HOME/$1/bin:\$PATH" /home/$2/.bashrc
+  sed -i "1i export PATH=\$HOME/$RUBY_VER/bin:\$PATH" /home/$APP_NAME/.bashrc
 fi
 
 # Install bundler
-if /home/$2/$1/bin/gem list | grep -q bundler ; then
+if /home/$APP_NAME/$RUBY_VER/bin/gem list | grep -q bundler ; then
   echo "bundler already installed"
 else
-  /home/$2/$1/bin/gem install bundler --no-ri --no-rdoc
+  /home/$APP_NAME/$RUBY_VER/bin/gem install bundler --no-ri --no-rdoc
 fi
 
 #ln ruby-local-exec
-ln -s /home/$2/$1/bin/ruby /usr/local/bin/ruby-local-exec
-ln -fs /home/$2/$1/bin/ruby /usr/bin/ruby
+ln -s /home/$APP_NAME/$RUBY_VER/bin/ruby /usr/local/bin/ruby-local-exec
+ln -fs /home/$APP_NAME/$RUBY_VER/bin/ruby /usr/bin/ruby
