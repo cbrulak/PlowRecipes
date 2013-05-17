@@ -27,7 +27,8 @@ server {
     try_files /500.html =500;
   }
 
-  location ~ ^/blog/.*-(.*)\..* {
+  location @app {
+    root /srv/$APP_NAME/public/blog/;
     gzip_static on;
     expires max;
   }
