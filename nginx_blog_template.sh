@@ -7,7 +7,7 @@ server {
 
   client_max_body_size 4G;
 
-  access_log /srv/$APP_NAME/log/blog.access.log;
+  access_log off;
   error_log /srv/$APP_NAME/log/blog.error.log;
 
   root /srv/$APP_NAME/public/blog/;

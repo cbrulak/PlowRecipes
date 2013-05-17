@@ -30,10 +30,6 @@ server {
   server_name *.$HOST_NAME www.$HOST_NAME $SUB_HOST_NAME;
 
   client_max_body_size 4G;
-
-  access_log /srv/$APP_NAME/log/access.log;
-  error_log /srv/$APP_NAME/log/error.log;
-
   root /srv/$APP_NAME/public/;
   
   keepalive_timeout 5;
