@@ -9,8 +9,8 @@ server {
   
   keepalive_timeout 5;
   #access_log off;
-  access_log /srv/$APP_NAME/public/log/blog.access.log;
-  error_log /srv/$APP_NAME/public/log/blog.error.log;
+  access_log /srv/$APP_NAME/log/blog.access.log;
+  error_log /srv/$APP_NAME/log/blog.error.log;
 
   root /srv/$APP_NAME/public/blog/;
   
