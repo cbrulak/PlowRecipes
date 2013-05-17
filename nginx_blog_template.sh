@@ -11,7 +11,7 @@ server {
   access_log off;
   error_log /srv/$APP_NAME/log/blog.error.log;
 
-  root /srv/$APP_NAME/public/blog/;
+  root /srv/blog/$APP_NAME/;
   
   try_files \$uri/index.html \$uri.html \$uri @app;
   error_page 502 503 =503                  @maintenance;
@@ -28,7 +28,6 @@ server {
   }
 
   location @app {
-    root /srv/$APP_NAME/public/blog/;
     gzip_static on;
     expires max;
   }
