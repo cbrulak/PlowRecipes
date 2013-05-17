@@ -1,4 +1,4 @@
-cat > files/nginx_blog.conf <<End-of-file
+cat > ../files/nginx_blog.conf <<End-of-file
 
 server {
   listen         80;
