@@ -41,8 +41,15 @@ server {
   location ~ ^/stylesheets/.*-(.*)\..* {
     gzip_static on;
     expires max;
+    add_header  Content-Type    text/css;
   }
 
+  location ~ ^/javascripts/.*-(.*)\..* {
+    gzip_static on;
+    expires max;
+    add_header  Content-Type    application/x-javascript;
+  }
+  
   location = /favicon.ico {
     expires    max;
   }
