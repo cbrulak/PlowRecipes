@@ -6,17 +6,14 @@ if test -x /opt/nginx/sbin/nginx ; then
 else
   apt-get -y install libpcre3 libpcre3-dev libpcrecpp0 zlib1g-dev libc6 libpcre3 libpcre3-dev libpcrecpp0 libssl0.9.8 libssl-dev zlib1g zlib1g-dev lsb-base
 
-  rm -rf /usr/local/build/nginx-1.3.11
+  rm -rf /usr/local/build/nginx-1.4.1
 
   mkdir -p /usr/local/nginx && mkdir -p /usr/local/build && mkdir -p /usr/local/sources
 
-  wget -cq --directory-prefix='/usr/local/sources' http://nginx.org/download/nginx-1.3.11.tar.gz
-  tar xzf /usr/local/sources/nginx-1.3.11.tar.gz -C /usr/local/build
+  wget -cq --directory-prefix='/usr/local/sources' http://nginx.org/download/nginx-1.4.1.tar.gz
+  tar xzf /usr/local/sources/nginx-1.4.1.tar.gz -C /usr/local/build
 
-  # Fetch and apply the Nginx SPDY patch
-  (cd /usr/local/build/nginx-1.3.11 && wget http://nginx.org/patches/spdy/patch.spdy-55_1.3.11.txt && patch -p1 < patch.spdy-55_1.3.11.txt)
-
-  (cd /usr/local/build/nginx-1.3.11 && ./configure --with-cc-opt=-Wno-warn --prefix=/opt/nginx --user=nginx --group=nginx  --with-http_ssl_module --with-http_spdy_module --with-http_gzip_static_module --with-openssl=/usr/local/build/openssl-1.0.1c && make && make install )
+  (cd /usr/local/build/nginx-1.4.1 && ./configure --with-cc-opt=-Wno-warn --prefix=/opt/nginx --user=nginx --group=nginx  --with-http_ssl_module --with-http_spdy_module --with-http_gzip_static_module --with-openssl=/usr/local/build/openssl-1.0.1c && make && make install )
   adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
 
