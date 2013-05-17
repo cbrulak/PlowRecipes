@@ -56,7 +56,7 @@ server {
     # set the proper protocol for doing redirects:
     # proxy_set_header X-Forwarded-Proto https;
 
-    proxy_pass http://$APP_NAME_app_server;
+    proxy_pass http://app_server_$APP_NAME;
   }
 
   location @maintenance {
