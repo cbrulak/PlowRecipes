@@ -1,6 +1,6 @@
 echo building nginx.conf...
 cat > files/nginx.conf <<End-of-file
-upstream app_server {
+upstream $APP_NAME_app_server {
   server unix:/srv/$APP_NAME/tmp/sockets/unicorn.sock fail_timeout=0;
 }
 
@@ -36,7 +36,7 @@ server {
   error_log  /srv/$APP_NAME/log/nginx.error.log;
   access_log  off;
 
-  listen 443 ssl spdy default_server;
+  listen 443 ssl spdy $DEFAULT_SERVER;
 
   ssl_certificate      /opt/nginx/certs/$APP_NAME/thedomain.pem;
   ssl_certificate_key  /opt/nginx/certs/$APP_NAME/myserver.key;
@@ -56,7 +56,7 @@ server {
     # set the proper protocol for doing redirects:
     # proxy_set_header X-Forwarded-Proto https;
 
-    proxy_pass http://app_server;
+    proxy_pass http://$APP_NAME_app_server;
   }
 
   location @maintenance {
