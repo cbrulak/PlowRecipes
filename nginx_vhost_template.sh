@@ -7,14 +7,14 @@ upstream app_server {
 server {
    listen         80;
    server_name    $HOST_NAME;
-   return 301 https://www.`$host`$1;
+   return 301 https://www.\$host\$1;
 }
 
 
 server {
    listen         80;
    server_name    www.$HOST_NAME;
-   return 301 https://www.`$host`$1;
+   return 301 https://www.\$host\$1;
 }
 
 server {
@@ -22,7 +22,7 @@ server {
    server_name    $HOST_NAME;
    ssl_certificate      /opt/nginx/certs/$APP_NAME/thedomain.pem;
    ssl_certificate_key  /opt/nginx/certs/$APP_NAME/myserver.key;
-   return 301 https://www.`$host`$1;
+   return 301 https://www.\$host\$1;
 }
 
 
