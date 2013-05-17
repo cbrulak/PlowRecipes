@@ -1,3 +1,4 @@
+echo building blog conf...
 cat > ../files/nginx_blog.conf <<End-of-file
 
 server {
