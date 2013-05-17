@@ -35,10 +35,10 @@ else
   cp ~/sunzi/files/nginx.conf /opt/nginx/conf/nginx.conf
 fi
 
-cp ~/sunzi/files/*.nginx.conf /opt/nginx/sites-enabled/
-mkdir -p /opt/nginx/certs
-mkdir -p /opt/nginx/certs/$1
-cp ~/sunzi/files/thedomain.pem /opt/nginx/certs/$1/thedomain.pem
-cp ~/sunzi/files/myserver.key  /opt/nginx/certs/$1/myserver.key
-restart nginx
+#cp ~/plow/files/*.nginx.conf /opt/nginx/sites-enabled/
+#mkdir -p /opt/nginx/certs
+#mkdir -p /opt/nginx/certs/$1
+#cp ~/sunzi/files/thedomain.pem /opt/nginx/certs/$1/thedomain.pem
+#cp ~/sunzi/files/myserver.key  /opt/nginx/certs/$1/myserver.key
+#restart nginx
 
