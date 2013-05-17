@@ -17,10 +17,10 @@ fi
 # if psql postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname='$1'" | grep -q 1
 #   echo 'database user already exists'
 # else
-  echo "setting up db roles: '$1' '$2' '$3'"
-  echo "CREATE USER $1 WITH PASSWORD '$2';" | sudo -u postgres psql
-  echo "CREATE DATABASE $3 OWNER $1;" | sudo -u postgres psql
-  echo "GRANT ALL PRIVILEGES ON DATABASE $3 to $1;" | sudo -u postgres psql
+  echo "setting up db roles: '$DB_USER' '$DB_PASS' '$DB_NAME'"
+  echo "CREATE USER $DB_USER WITH PASSWORD '$DB_PASS';" | sudo -u postgres psql
+  echo "CREATE DATABASE $DB_NAME OWNER $DB_USER;" | sudo -u postgres psql
+  echo "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME to $DB_USER;" | sudo -u postgres psql
 # fi
 
 
