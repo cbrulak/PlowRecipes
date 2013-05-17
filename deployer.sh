@@ -3,18 +3,18 @@
 # $1 - deploy_user
 # $2 - ssh_key_file
 
-useradd --create-home --shell /bin/bash --user-group --groups sudo $1
+useradd --create-home --shell /bin/bash --user-group --groups sudo $APP_NAME
 
-mkdir -p /home/$1/.ssh
-touch /home/$1/.bashrc
-cp files/authorized_keys /home/$1/.ssh/authorized_keys
-cp files/known_hosts /home/$1/.ssh/known_hosts
-chmod 700 /home/$1/.ssh
-chmod 600 /home/$1/.ssh/authorized_keys
-chown -R $1:$1 /home/$1/.ssh
-chown -R $1:$1 /home/$1/
+mkdir -p /home/$APP_NAME/.ssh
+touch /home/$APP_NAME/.bashrc
+cp files/authorized_keys /home/$APP_NAME/.ssh/authorized_keys
+cp files/known_hosts /home/$APP_NAME/.ssh/known_hosts
+chmod 700 /home/$APP_NAME/.ssh
+chmod 600 /home/$APP_NAME/.ssh/authorized_keys
+chown -R $APP_NAME:$APP_NAME /home/$APP_NAME/.ssh
+chown -R $APP_NAME:$APP_NAME /home/$APP_NAME/
 mkdir -p /srv
 
-cat `export RUBY=/home/$1/1.9.3-p194/bin/ruby` >> /home/$1/.bashrc
+cat `export RUBY=/home/$1/1.9.3-p194/bin/ruby` >> /home/$APP_NAME/.bashrc
 
-echo $1 ALL=\(ALL\) NOPASSWD:ALL >> /etc/sudoers
+echo $APP_NAME ALL=\(ALL\) NOPASSWD:ALL >> /etc/sudoers
