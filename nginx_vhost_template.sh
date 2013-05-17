@@ -1,4 +1,4 @@
-cat > ~/plow/files/nginx.conf <<End-of-file
+cat > .plow/files/nginx.conf <<End-of-file
 upstream app_server {
   server unix:/srv/$APP_NAME/tmp/sockets/unicorn.sock fail_timeout=0;
 }
