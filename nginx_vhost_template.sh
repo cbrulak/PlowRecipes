@@ -1,6 +1,6 @@
 echo building nginx.conf...
 cat > files/nginx.conf <<End-of-file
-upstream $APP_NAME_app_server {
+upstream app_server_$APP_NAME {
   server unix:/srv/$APP_NAME/tmp/sockets/unicorn.sock fail_timeout=0;
 }
 
