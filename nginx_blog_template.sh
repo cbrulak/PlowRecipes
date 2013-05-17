@@ -1,4 +1,4 @@
-cat > ~/plow/files/$APP_NAME.nginx_blog.conf <<End-of-file
+cat > ~/plow/files/nginx_blog.conf <<End-of-file
 
 server {
   listen         80;
